@@ -1,4 +1,4 @@
-// Mostrar ou ocultar o botão conforme o scroll
+// Mostrar ou ocultar o botão "Voltar ao topo" conforme o scroll
 window.onscroll = function () {
   const btn = document.getElementById("btnTopo");
   if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -8,33 +8,18 @@ window.onscroll = function () {
   }
 };
 
-// Quando clicado, volta suavemente para o topo
+// Ao clicar no botão, volta suavemente para o topo
 document.getElementById("btnTopo").addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-document.getElementById('toggle-dark-mode').addEventListener('click', function () {
-  document.body.classList.toggle('dark-mode');
-});
-const toggleBtn = document.getElementById('toggle-dark-mode');
-
-toggleBtn.addEventListener('click', function () {
-  document.body.classList.toggle('dark-mode');
-
-  if (document.body.classList.contains('dark-mode')) {
-    toggleBtn.textContent = '☀️ Modo Claro';
-  } else {
-    toggleBtn.textContent = '🌙 Modo Escuro';
-  }
-});
-// Elementos
-const toggle = document.getElementById("toggle-darkmode");
+// Alternância de tema com persistência via localStorage
+const toggle = document.getElementById("toggle-dark-mode");
 const body = document.body;
 
-// Checar se o usuário já tem uma preferência salva
+// Verifica se há tema salvo
 const savedTheme = localStorage.getItem("theme");
 
-// Se existir uma preferência, aplicar
 if (savedTheme === "dark") {
   body.classList.add("dark-mode");
   toggle.textContent = "☀️ Modo Claro";
@@ -42,11 +27,10 @@ if (savedTheme === "dark") {
   toggle.textContent = "🌙 Modo Escuro";
 }
 
-// Alternar temas ao clicar no botão
+// Ao clicar no botão de modo escuro/claro
 toggle.addEventListener("click", () => {
   body.classList.toggle("dark-mode");
 
-  // Salvar a preferência no localStorage
   if (body.classList.contains("dark-mode")) {
     localStorage.setItem("theme", "dark");
     toggle.textContent = "☀️ Modo Claro";
@@ -54,6 +38,16 @@ toggle.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
     toggle.textContent = "🌙 Modo Escuro";
   }
+});
+
+// Animação simples ao clicar nos botões de ação (CTA)
+document.querySelectorAll('.btn').forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.add('clicked');
+    setTimeout(() => {
+      button.classList.remove('clicked');
+    }, 200);
+  });
 });
 
 
