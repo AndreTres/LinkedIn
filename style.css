@@ -30,6 +30,40 @@ header p {
   font-size: 1.2em;
   text-align: center;
 }
+#toggle-dark-mode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  background-color: #013220;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#toggle-dark-mode:hover {
+  background-color: #025c2c;
+}
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.dark-mode section {
+  background-color: #1e1e1e;
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: #0a0a0a;
+}
+
+.dark-mode a {
+  color: #80cbc4;
+}
+
 
 section {
   padding: 30px 20px;
