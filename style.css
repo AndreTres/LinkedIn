@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
 }
 
@@ -194,6 +195,11 @@ section p {
   transition: transform 0.1s, box-shadow 0.1s;
 }
 
+.btn.clicked {
+  transform: scale(0.95);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
 footer {
   background-color: #013220;
   color: white;
