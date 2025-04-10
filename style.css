@@ -6,7 +6,7 @@ body {
   line-height: 1.6;
 }
 header {
-  background-color: #0B3D2E; 
+  background-color: #004d40; 
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -44,7 +44,7 @@ section {
 }
 
 section h2 {
-  color: #0B3D2E;
+  color: #004d40;
 }
 
 
@@ -69,7 +69,7 @@ section p {
 }
 
 #contato a {
-  color: #0B3D2E;
+  color: #004d40;
   text-decoration: none;
 }
 
@@ -79,7 +79,7 @@ section p {
 
 
 footer {
-  background-color: #0B3D2E;
+  background-color: #004d40;
   color: white;
   text-align: center;
   padding: 15px;
