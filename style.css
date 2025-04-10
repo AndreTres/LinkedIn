@@ -48,13 +48,15 @@ footer {
       font-size: 0.9rem;
     }
 header {
-  background-color: #4CAF50; 
+  background-color: #2e7d32; 
   color: white;
   display: flex;
   align-items: center;
-  text-align: center;
   padding: 1rem;
   flex-wrap: wrap;       /* para o layout ficar responsivo */
+}
+header p {
+      text-align: center;
 }
 
 .foto-header {
