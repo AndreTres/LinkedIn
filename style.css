@@ -42,6 +42,7 @@ section {
 
 section h2 {
   color: #013220;
+  font-size: 1.4em;
 }
 
 section p {
@@ -137,10 +138,9 @@ footer {
     margin: 15px 10px;
   }
 
-  section h2 {
-    font-size: 1.4em;
-  }
-
+.centralizado {
+  text-align: center;
+}
   footer {
     padding: 10px;
     font-size: 0.9em;
