@@ -154,6 +154,11 @@ section p {
   font-size: 12px;
   margin-top: 4px;
 }
+.btn-cta.clicked {
+  transform: scale(0.95);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
 
 footer {
   background-color: #013220;
