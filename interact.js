@@ -26,6 +26,34 @@ toggleBtn.addEventListener('click', function () {
     toggleBtn.textContent = '🌙 Modo Escuro';
   }
 });
+// Elementos
+const toggle = document.getElementById("toggle-darkmode");
+const body = document.body;
+
+// Checar se o usuário já tem uma preferência salva
+const savedTheme = localStorage.getItem("theme");
+
+// Se existir uma preferência, aplicar
+if (savedTheme === "dark") {
+  body.classList.add("dark-mode");
+  toggle.textContent = "☀️ Modo Claro";
+} else {
+  toggle.textContent = "🌙 Modo Escuro";
+}
+
+// Alternar temas ao clicar no botão
+toggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  // Salvar a preferência no localStorage
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+    toggle.textContent = "☀️ Modo Claro";
+  } else {
+    localStorage.setItem("theme", "light");
+    toggle.textContent = "🌙 Modo Escuro";
+  }
+});
 
 
 
