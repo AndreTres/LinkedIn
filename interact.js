@@ -12,4 +12,8 @@ window.onscroll = function () {
 document.getElementById("btnTopo").addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+document.getElementById('toggle-dark-mode').addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
+});
+
 
