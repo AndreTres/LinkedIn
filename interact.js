@@ -15,5 +15,17 @@ document.getElementById("btnTopo").addEventListener("click", () => {
 document.getElementById('toggle-dark-mode').addEventListener('click', function () {
   document.body.classList.toggle('dark-mode');
 });
+const toggleBtn = document.getElementById('toggle-dark-mode');
+
+toggleBtn.addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
+
+  if (document.body.classList.contains('dark-mode')) {
+    toggleBtn.textContent = '☀️ Modo Claro';
+  } else {
+    toggleBtn.textContent = '🌙 Modo Escuro';
+  }
+});
+
 
 
