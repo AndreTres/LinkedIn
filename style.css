@@ -37,7 +37,14 @@ ul {
 li {
       margin-bottom: 0.5rem;
     }
-
+.foto-perfil {
+      width: 180px;
+      height: auto;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 a {
       color: #00695c;
       text-decoration: none;
