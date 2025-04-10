@@ -74,26 +74,39 @@ section p {
   color: #013220;
   margin-right: 8px;
 }
+
 .cta-buttons {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;   /*Permite que o botão se comporte como um elemento "em linha", mas com controle de largura e altura como um bloco*/
+  align-items: center;
+  gap: 10px;
   margin: 10px;
-  padding: 12px 24px;
-  background-color: #013220;
+  padding: 12px 24px;  /*Espaçamento interno*/
+  background-color: #014421; 
   color: white;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 30px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-size: 1em;
+  transition: all 0.3s ease;  /*Adiciona animações suaves*/
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn i {
+  font-size: 1.2em;
 }
 
 .btn:hover {
   background-color: #026440;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
+
+
 footer {
   background-color: #013220;
   color: white;
