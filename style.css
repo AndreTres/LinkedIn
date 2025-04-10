@@ -6,7 +6,7 @@ body {
   line-height: 1.6;
 }
 header {
-  background-color: #2e7d32; 
+  background-color: #0B3D2E; 
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -25,7 +25,7 @@ header img {
   border: 3px solid white;
 }
 
-/* Parágrafo logo abaixo do título */
+
 header p {
   margin-top: 10px;
   font-size: 1.2em;
@@ -44,7 +44,7 @@ section {
 }
 
 section h2 {
-  color: #2e7d32;
+  color: #0B3D2E;
 }
 
 
@@ -69,7 +69,7 @@ section p {
 }
 
 #contato a {
-  color: #2e7d32;
+  color: #0B3D2E;
   text-decoration: none;
 }
 
@@ -77,9 +77,9 @@ section p {
   text-decoration: underline;
 }
 
-/* Rodapé */
+
 footer {
-  background-color: #2e7d32;
+  background-color: #0B3D2E;
   color: white;
   text-align: center;
   padding: 15px;
