@@ -110,6 +110,16 @@ section p {
   color: #013220;
   margin-right: 8px;
 }
+.dark-mode #contato i {
+  color: #4db6ac; 
+}
+
+.dark-mode #contato a {
+  color: #e0f2f1; 
+}
+.dark-mode section h2 {
+  color: #80cbc4; 
+}
 
 .cta-buttons {
   text-align: center;
