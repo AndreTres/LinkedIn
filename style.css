@@ -6,7 +6,7 @@ body {
   line-height: 1.6;
 }
 header {
-  background-color: #013220; 
+  background-color: #4B5320; 
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -44,7 +44,7 @@ section {
 }
 
 section h2 {
-  color: #013220;
+  color: #4B5320;
 }
 
 
@@ -79,7 +79,7 @@ section p {
 
 
 footer {
-  background-color: #013220;
+  background-color: #4B5320;
   color: white;
   text-align: center;
   padding: 15px;
