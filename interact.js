@@ -49,6 +49,26 @@ document.querySelectorAll('.btn').forEach(button => {
     }, 200);
   });
 });
+// Seleciona todas as sections que serão animadas
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("section-visible");
+      entry.target.classList.remove("section-hidden");
+    }
+  });
+}, {
+  threshold: 0.1  // A animação é disparada quando 10% da section aparece
+});
+
+// Aplica as classes às seções
+sections.forEach(section => {
+  section.classList.add("section-hidden");
+  observer.observe(section);
+});
+
 
 
 
