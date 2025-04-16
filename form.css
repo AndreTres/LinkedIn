@@ -1,0 +1,100 @@
+/* Estilos principais para o formulário de contato */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+.dark-mode body {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode form {
+  background-color: #1e1e1e;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #014421;
+}
+
+.dark-mode form h2 {
+  color: #76c7a3;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #014421;
+  outline: none;
+}
+
+.dark-mode form input,
+.dark-mode form textarea {
+  background-color: #2b2b2b;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+form button {
+  display: inline-block;
+  background-color: #014421;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #026440;
+}
+
+form .btn {
+  margin-top: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  form {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  form button {
+    width: 100%;
+  }
+}
