@@ -29,22 +29,28 @@
             <input type="text" id="empresa" name="empresa">
       <label for="loc">Localização da Empresa:</label>
             <input type="text" id="loc" name="localizacao">
+<div class="form-group">
   <label for="vaga">Vaga à Procura</label>
-<select id="vaga" name="vaga" required>
-  <option value="">Selecione uma opção</option>
-  <option value="desenvolvedor_frontend">Desenvolvedor Front-end</option>
-  <option value="desenvolvedor_backend">Desenvolvedor Back-end</option>
-  <option value="full_stack">Desenvolvedor Full Stack</option>
-  <option value="mobile">Desenvolvedor Mobile</option>
-  <option value="analista_dados">Analista de Dados Jr</option>
-  <option value="estagio_desenvolvimento">Estágio em Desenvolvimento de Sistemas</option>
-  <option value="auxiliar_adm">Auxiliar Administrativo</option>
-  <option value="financas">Finanças</option>
-  <option value="engenharia_producao">Engenharia de Produção</option>
-  <option value="analista_processos">Analista de Processos Jr</option>
-  <option value="estagio_powerbi">Estágio em Power BI - Análise de Dados</option>
-  <option value="outro">Outro</option>
-</select>
+      <select id="vaga" name="vaga" required>
+          <option value="">Selecione uma opção</option>
+          <option value="desenvolvedor_frontend">Desenvolvedor Front-end</option>
+          <option value="desenvolvedor_backend">Desenvolvedor Back-end</option>
+          <option value="full_stack">Desenvolvedor Full Stack</option>
+          <option value="mobile">Desenvolvedor Mobile</option>
+          <option value="analista_dados">Analista de Dados Jr</option>
+          <option value="estagio_desenvolvimento">Estágio em Desenvolvimento de Sistemas</option>
+          <option value="auxiliar_adm">Auxiliar Administrativo</option>
+          <option value="financas">Finanças</option>
+          <option value="engenharia_producao">Engenharia de Produção</option>
+          <option value="analista_processos">Analista de Processos Jr</option>
+          <option value="estagio_powerbi">Estágio em Power BI - Análise de Dados</option>
+          <option value="Outra">Outra</option> 
+      </select>
+</div>
+<div class="form-group" id="outra-vaga-container" style="display: none;">
+  <label for="outraVaga">Se selecionou "Outra", qual vaga está procurando?</label>
+  <input type="text" id="outraVaga" name="outraVaga" placeholder="Digite o nome da vaga">
+</div>
       <label for="assunto">Assunto:</label>
             <input type="text" id="assunto" name="assunto" required>
       <label for="mensagem">Mensagem:</label>
