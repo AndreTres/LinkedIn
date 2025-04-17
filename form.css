@@ -122,4 +122,37 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: var(--cor-destaque-hover);
 }
+/* Campo adicional "Outra Vaga" */
+#outra-vaga-container {
+  display: none; /* Oculto por padrão */
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
 
+/* Fade-in quando visível */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Garantir que o input siga o estilo dos demais */
+#outra-vaga-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+
+#outra-vaga-container input:focus {
+  border-color: #4caf50; 
+  outline: none;
+}
+body.dark-mode #outra-vaga-container input {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
