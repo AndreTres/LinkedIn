@@ -19,18 +19,38 @@
   <section id="formulario-contato">
     <h2>Dê o Primeiro Passo</h2>
     <form id="form-contato">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" required>
-
+      <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
       <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" required>
-
+            <input type="email" id="email" name="email" required>
+      <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="+55 (__) ____-____" required>
+      <label for="empresa">Empresa / Organização:</label>
+            <input type="text" id="empresa" name="empresa">
+      <label for="loc">Localização da Empresa:</label>
+            <input type="text" id="loc" name="localizacao">
       <label for="assunto">Assunto:</label>
-      <input type="text" id="assunto" name="assunto" required>
-
+  <label for="vaga">Vaga à Procura</label>
+<select id="vaga" name="vaga" required>
+  <option value="">Selecione...</option>
+  <option value="desenvolvedor_frontend">Desenvolvedor Front-end</option>
+  <option value="desenvolvedor_backend">Desenvolvedor Back-end</option>
+  <option value="full_stack">Desenvolvedor Full Stack</option>
+  <option value="mobile">Desenvolvedor Mobile</option>
+  <option value="analista_dados">Analista de Dados Jr</option>
+  <option value="estagio_desenvolvimento">Estágio em Desenvolvimento de Sistemas</option>
+  <option value="auxiliar_adm">Auxiliar Administrativo</option>
+  <option value="financas">Finanças</option>
+  <option value="engenharia_producao">Engenharia de Produção</option>
+  <option value="analista_processos">Analista de Processos Jr</option>
+  <option value="estagio_powerbi">Estágio em Power BI - Análise de Dados</option>
+</select>
+            <input type="text" id="assunto" name="assunto" required>
       <label for="mensagem">Mensagem:</label>
-      <textarea id="mensagem" name="mensagem" rows="10" required></textarea>
-
+            <textarea id="mensagem" name="mensagem" rows="10" required></textarea>
+      <label>
+      <input type="checkbox" id="cons" name="cons" required>
+      Autorizo o armazenamento dos meus dados para fins de contato (LGPD).</label>
       <button type="submit" class="btn">Enviar  Resposta</button>
     </form>
   </section>
