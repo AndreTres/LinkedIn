@@ -184,5 +184,5 @@ body.dark-mode .checkbox-label {
   width: 18px;
   height: 18px;
   accent-color: #4caf50;
-  transform: translateY(1px);
+  transform: translateY(0px);
 }
