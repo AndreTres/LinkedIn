@@ -1,7 +1,7 @@
 // Mostrar ou ocultar o botão "Voltar ao topo" conforme o scroll
 window.onscroll = function () {
   const btn = document.getElementById("btnTopo");
-  if (btn) { // Verifica se o botão realmente existe
+  if (btn) {
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       btn.style.display = "block";
     } else {
@@ -12,7 +12,7 @@ window.onscroll = function () {
 
 // Ao clicar no botão, volta suavemente para o topo
 const btnTopo = document.getElementById("btnTopo");
-if (btnTopo) { // Verifica se o botão existe
+if (btnTopo) {
   btnTopo.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
@@ -22,7 +22,6 @@ if (btnTopo) { // Verifica se o botão existe
 const toggle = document.getElementById("toggle-dark-mode");
 const body = document.body;
 
-// Verifica se há tema salvo
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
   body.classList.add("dark-mode");
@@ -31,8 +30,7 @@ if (savedTheme === "dark") {
   toggle.textContent = "🌙 Modo Escuro";
 }
 
-// Ao clicar no botão de modo escuro/claro
-if (toggle) { // Verifica se o toggle existe
+if (toggle) {
   toggle.addEventListener("click", () => {
     body.classList.toggle("dark-mode");
 
@@ -46,7 +44,7 @@ if (toggle) { // Verifica se o toggle existe
   });
 }
 
-// Animação simples ao clicar nos botões de ação (CTA)
+// Animação ao clicar nos botões de ação (CTA)
 document.querySelectorAll('.btn').forEach(button => {
   button.addEventListener('click', () => {
     button.classList.add('clicked');
@@ -56,9 +54,8 @@ document.querySelectorAll('.btn').forEach(button => {
   });
 });
 
-// Seleciona todas as sections que serão animadas
+// Animação das seções
 const sections = document.querySelectorAll("section");
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -66,16 +63,23 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.remove("section-hidden");
     }
   });
-}, {
-  threshold: 0.1  // A animação é disparada quando 10% da section aparece
-});
+}, { threshold: 0.1 });
 
-// Aplica as classes às seções
 sections.forEach(section => {
   section.classList.add("section-hidden");
   observer.observe(section);
 });
 
+// Mostrar campo de vaga personalizada quando "Outra" for selecionado
+const selectVaga = document.getElementById("vaga");
+const campoOutraVaga = document.getElementById("outra-vaga-container");
 
-
-
+if (selectVaga && campoOutraVaga) {
+  selectVaga.addEventListener("change", () => {
+    if (selectVaga.value === "Outra") {
+      campoOutraVaga.style.display = "block";
+    } else {
+      campoOutraVaga.style.display = "none";
+    }
+  });
+}
