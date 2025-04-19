@@ -172,7 +172,7 @@ body.dark-mode #outra-vaga-container input {
   color: var(--text-color);
   gap: 8px;
   line-height: 1.2;
-  transform: translateY(-1px);
+  transform: translateY(-10px);
 }
 
 /* Escurecer o texto da LGPD no dark mode */
