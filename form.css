@@ -161,7 +161,7 @@ body.dark-mode #outra-vaga-container input {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .checkbox-label {
@@ -171,7 +171,7 @@ body.dark-mode #outra-vaga-container input {
   font-weight: bold;
   color: var(--text-color);
   gap: 8px;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 /* Escurecer o texto da LGPD no dark mode */
@@ -184,4 +184,5 @@ body.dark-mode .checkbox-label {
   width: 18px;
   height: 18px;
   accent-color: #4caf50;
+  transform: translateY(1px);
 }
