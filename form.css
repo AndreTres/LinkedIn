@@ -161,7 +161,7 @@ body.dark-mode #outra-vaga-container input {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .checkbox-label {
@@ -187,10 +187,10 @@ body.dark-mode .checkbox-label {
   color: #ddd;
 }
 
-/* Tamanho do checkbox */
 .checkbox-label input[type="checkbox"] {
   width: 18px;
   height: 18px;
   accent-color: #4caf50;
-  transform: translateY(0px);
+  position: relative;
+  top: 1px; 
 }
