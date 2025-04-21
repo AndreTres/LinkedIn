@@ -65,7 +65,7 @@ header p {
   background-color: #1e1e1e;
 }
 .dark-mode section h2 {
-  color: #e0f2f1; 
+  color: #e0f2f1;
 }
 
 .dark-mode header,
@@ -185,7 +185,7 @@ ul {
 }
 #btnTopo span {
   font-size: 14px;
-  margin-top: 4px;  
+  margin-top: 4px;
 }
 
 /* Transições para a entrada das seções */
@@ -206,6 +206,40 @@ footer {
   text-align: center;
   padding: 15px;
   margin-top: 30px;
+}
+
+/* Galeria de certificados */
+#certificados {
+  display: none;
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+}
+
+#certificados h2 {
+  font-size: 1.6em;
+  color: #013220;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.certificado-item {
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 4px solid #014421;
+  background-color: #f9f9f9;
+}
+
+.dark-mode #certificados {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .certificado-item {
+  background-color: #2a2a2a;
+  border-left-color: #4db6ac;
 }
 
 /* Responsividade */
@@ -236,4 +270,3 @@ footer {
     padding: 10px 20px;
   }
 }
-
