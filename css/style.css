@@ -1,1 +1,272 @@
+/* Reset de estilos padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+  background-color: #013220;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+header h1 {
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+header p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+#toggle-dark-mode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #013220;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#toggle-dark-mode:hover {
+  background-color: #025c2c;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.dark-mode section {
+  background-color: #1e1e1e;
+}
+.dark-mode section h2 {
+  color: #e0f2f1;
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: #0a0a0a;
+}
+
+.dark-mode a {
+  color: #80cbc4;
+}
+
+section {
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  font-size: 1.6em;
+  color: #013220;
+  margin-bottom: 20px;
+}
+
+section p {
+  text-align: justify;
+}
+
+ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+#contato ul {
+  list-style-type: none;
+}
+
+#contato li {
+  margin-bottom: 12px;
+}
+
+#contato a {
+  color: #013220;
+  text-decoration: none;
+}
+
+#contato a:hover {
+  text-decoration: underline;
+}
+
+#contato i {
+  margin-right: 10px;
+  color: #013220;
+}
+
+.dark-mode #contato i {
+  color: #4db6ac;
+}
+
+.dark-mode #contato a {
+  color: #e0f2f1;
+}
+
+.cta-buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 12px 24px;
+  background-color: #014421;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn i {
+  font-size: 1.2em;
+}
+
+.btn:hover {
+  background-color: #026440;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Botão "Voltar ao Topo" */
+#btnTopo {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #013220;
+  color: white;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+#btnTopo:hover {
+  background-color: #025c35;
+}
+#btnTopo span {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Transições para a entrada das seções */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  background-color: #013220;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+/* Galeria de certificados */
+#certificados {
+  display: none;
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+}
+
+#certificados h2 {
+  font-size: 1.6em;
+  color: #013220;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.certificado-item {
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 4px solid #014421;
+  background-color: #f9f9f9;
+}
+
+.dark-mode #certificados {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .certificado-item {
+  background-color: #2a2a2a;
+  border-left-color: #4db6ac;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
+    padding: 80px 20px 40px;
+  }
+
+  header img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    display: block;
+  }
+
+  section {
+    padding: 20px 15px;
+    margin: 15px 10px;
+  }
+
+  footer {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .cta-buttons .btn {
+    font-size: 0.9em;
+    padding: 10px 20px;
+  }
+}
