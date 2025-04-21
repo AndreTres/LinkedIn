@@ -2,11 +2,10 @@
 window.onscroll = function () {
   const btn = document.getElementById("btnTopo");
   if (btn) {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
+    btn.style.display =
+      document.body.scrollTop > 200 || document.documentElement.scrollTop > 200
+        ? "block"
+        : "none";
   }
 };
 
@@ -70,16 +69,15 @@ sections.forEach(section => {
   observer.observe(section);
 });
 
-// Mostrar campo de vaga personalizada quando "Outra" for selecionado
-const selectVaga = document.getElementById("vaga");
-const campoOutraVaga = document.getElementById("outra-vaga-container");
+// Mostrar/ocultar galeria de certificados
+const botaoCertificados = document.getElementById("ver-certificados");
+const galeria = document.getElementById("certificados");
 
-if (selectVaga && campoOutraVaga) {
-  selectVaga.addEventListener("change", () => {
-    if (selectVaga.value === "Outra") {
-      campoOutraVaga.style.display = "block";
-    } else {
-      campoOutraVaga.style.display = "none";
-    }
+if (botaoCertificados && galeria) {
+  botaoCertificados.addEventListener("click", () => {
+    galeria.style.display =
+      galeria.style.display === "none" || galeria.style.display === ""
+        ? "block"
+        : "none";
   });
 }
