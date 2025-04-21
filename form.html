@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Entre em Contato</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/form.css">
+  <script src="https://kit.fontawesome.com/9c4d8e1c01.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+    <h1 class="titulo">Formulário de Contato</h1>
+    <button id="toggle-dark-mode" class="btn modo-escuro-btn">🌙 Modo Escuro</button>
+    </div>
+  </header>
 
+  <section id="formulario-contato">
+    <h2>Dê o Primeiro Passo</h2>
+    <form id="form-contato">
+      <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+      <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+      <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="+55 (__) ____-____" required>
+      <label for="empresa">Empresa / Organização:</label>
+            <input type="text" id="empresa" name="empresa">
+      <label for="loc">Localização da Empresa:</label>
+            <input type="text" id="loc" name="localizacao">
+<div class="form-group">
+  <label for="vaga">Vaga à Procura</label>
+      <select id="vaga" name="vaga" required>
+          <option value="">Selecione uma opção</option>
+          <option value="desenvolvedor_frontend">Desenvolvedor Front-end</option>
+          <option value="desenvolvedor_backend">Desenvolvedor Back-end</option>
+          <option value="full_stack">Desenvolvedor Full Stack</option>
+          <option value="mobile">Desenvolvedor Mobile</option>
+          <option value="analista_dados">Analista de Dados Jr</option>
+          <option value="estagio_desenvolvimento">Estágio em Desenvolvimento de Sistemas</option>
+          <option value="auxiliar_adm">Auxiliar Administrativo</option>
+          <option value="financas">Finanças</option>
+          <option value="engenharia_producao">Engenharia de Produção</option>
+          <option value="analista_processos">Analista de Processos Jr</option>
+          <option value="estagio_powerbi">Estágio em Power BI - Análise de Dados</option>
+          <option value="Outra">Outra</option> 
+      </select>
+</div>
+<div class="form-group" id="outra-vaga-container" style="display: none;">
+  <label for="outraVaga">Se selecionou "Outra", qual vaga está procurando?</label>
+  <input type="text" id="outraVaga" name="outraVaga" placeholder="Digite o nome da vaga">
+</div>
+      <label for="assunto">Descrição da Vaga</label>
+            <textarea id="desc" name="desc" rows="10" required></textarea>
+      <label for="mensagem">Mensagem:</label>
+            <input type="text" id="mensagem" name="mensagem" rows="5" required>
+      <label>
+<div class="form-group checkbox-group">
+  <label class="checkbox-label">
+    <input type="checkbox" id="lgpd" name="lgpd" required>
+    <span class="checkbox-text">Concordo com o uso dos meus dados conforme a Lei Geral da Proteção de Dados</span>
+    </label>
+</div>
+      <button type="submit" class="btn">Enviar  Resposta</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 André Tres. Todos os direitos reservados.</p>
+  </footer>
+  <script src="../JavaScript/interact.js" defer></script>
+</body>
+</html>
