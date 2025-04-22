@@ -1,5 +1,5 @@
 // Mostrar ou ocultar o botão "Voltar ao topo" conforme o scroll
-window.onscroll = function () {
+function handleScroll() {
   const btn = document.getElementById("btnTopo");
   if (btn) {
     btn.style.display =
@@ -7,41 +7,40 @@ window.onscroll = function () {
         ? "block"
         : "none";
   }
-};
+}
+window.addEventListener("scroll", handleScroll);
 
 // Ao clicar no botão, volta suavemente para o topo
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 const btnTopo = document.getElementById("btnTopo");
 if (btnTopo) {
-  btnTopo.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  btnTopo.addEventListener("click", scrollToTop);
 }
 
 // Alternância de tema com persistência via localStorage
-const toggle = document.getElementById("toggle-dark-mode");
-const body = document.body;
-
+function toggleTheme() {
+  const body = document.body;
+  const toggle = document.getElementById("toggle-dark-mode");
+  
+  body.classList.toggle("dark-mode");
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+    toggle.textContent = "☀️ Modo Claro";
+  } else {
+    localStorage.setItem("theme", "light");
+    toggle.textContent = "🌙 Modo Escuro";
+  }
+}
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
-  body.classList.add("dark-mode");
-  toggle.textContent = "☀️ Modo Claro";
+  document.body.classList.add("dark-mode");
+  document.getElementById("toggle-dark-mode").textContent = "☀️ Modo Claro";
 } else {
-  toggle.textContent = "🌙 Modo Escuro";
+  document.getElementById("toggle-dark-mode").textContent = "🌙 Modo Escuro";
 }
-
-if (toggle) {
-  toggle.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-
-    if (body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-      toggle.textContent = "☀️ Modo Claro";
-    } else {
-      localStorage.setItem("theme", "light");
-      toggle.textContent = "🌙 Modo Escuro";
-    }
-  });
-}
+document.getElementById("toggle-dark-mode")?.addEventListener("click", toggleTheme);
 
 // Animação ao clicar nos botões de ação (CTA)
 document.querySelectorAll('.btn').forEach(button => {
@@ -53,31 +52,28 @@ document.querySelectorAll('.btn').forEach(button => {
   });
 });
 
-// Animação das seções
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
+// Animação das seções (visibilidade ao rolar a página)
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("section-visible");
       entry.target.classList.remove("section-hidden");
     }
   });
-}, { threshold: 0.1 });
+}, observerOptions);
 
-sections.forEach(section => {
+document.querySelectorAll("section").forEach((section) => {
   section.classList.add("section-hidden");
   observer.observe(section);
 });
 
 // Mostrar/ocultar galeria de certificados
-const botaoCertificados = document.getElementById("ver-certificados");
-const galeria = document.getElementById("certificados");
-
-if (botaoCertificados && galeria) {
-  botaoCertificados.addEventListener("click", () => {
-    galeria.style.display =
-      galeria.style.display === "none" || galeria.style.display === ""
-        ? "block"
-        : "none";
-  });
+function toggleCertificados() {
+  const galeria = document.getElementById("certificados");
+  if (galeria) {
+    galeria.style.display = galeria.style.display === "none" || galeria.style.display === "" ? "block" : "none";
+  }
 }
+const botaoCertificados = document.getElementById("ver-certificados");
+botaoCertificados?.addEventListener("click", toggleCertificados);
