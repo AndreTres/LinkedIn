@@ -194,6 +194,17 @@ body.dark-mode .checkbox-label {
   position: relative;
   top: 1px; 
 }
+textarea {
+  font-family: Arial, sans-serif; 
+  font-size: 16px; 
+  font-weight: normal; 
+  line-height: 1.5; 
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  box-sizing: border-box; /* Certifica-se de que o padding não afete o tamanho total do elemento */
+}
+
 /* Estilo unificado para campos dentro da .form-group */
 .form-group {
   margin-top: 20px;
