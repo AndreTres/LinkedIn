@@ -192,7 +192,7 @@ body.dark-mode .checkbox-label {
   height: 18px;
   accent-color: #4caf50;
   position: relative;
-  top: 3px; 
+  top: -1px; 
 }
 /* Estilo unificado para campos dentro da .form-group */
 .form-group {
