@@ -1,17 +1,16 @@
 <?php
-// Inclui o arquivo de conexão
+
 include("conexao.php");
 
-// Captura os dados do formulário enviados via POST
-$nome = $_POST['nome_completo'] ?? '';
+$nome = $_POST['nome'] ?? '';  
 $email = $_POST['email'] ?? '';
 $telefone = $_POST['telefone'] ?? '';
 $empresa = $_POST['empresa'] ?? '';
 $localizacao = $_POST['localizacao'] ?? '';
 $estado = $_POST['estado'] ?? '';
-$vaga_procura = $_POST['vaga_procura'] ?? '';
-$vaga_procura_outra = $_POST['vaga_procura_outra'] ?? '';
-$descricao_vaga = $_POST['descricao_vaga'] ?? '';
+$vaga_procura = $_POST['vaga'] ?? '';  
+$vaga_procura_outra = $_POST['outraVaga'] ?? '';  
+$descricao_vaga = $_POST['desc'] ?? '';  
 $mensagem = $_POST['mensagem'] ?? '';
 
 // Prepara a query de inserção
