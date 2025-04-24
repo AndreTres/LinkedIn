@@ -30,15 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executa a query e verifica se foi bem-sucedido
     if ($stmt->execute()) {
-        $mensagem = "<p style='color: green;'>Sua mensagem foi enviada com sucesso!</p>";
+        // Mensagem de sucesso
+        $mensagem = "Sua mensagem foi enviada com sucesso!";
     } else {
-        $mensagem = "<p style='color: red;'>Erro ao enviar. Tente novamente mais tarde.</p>";
+        // Mensagem de erro
+        $mensagem = "Erro ao enviar. Tente novamente mais tarde.";
     }
 
     // Fecha a conexão
     $stmt->close();
     $conn->close();
-}
 
-echo $mensagem; // Exibe a mensagem de feedback (sucesso ou erro)
+    // Retorna a mensagem para o frontend
+    echo $mensagem;
+}
 ?>
