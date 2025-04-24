@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 include("conexao.php");
 
 $mensagem = ""; // Variável para exibir mensagens de sucesso ou erro
@@ -16,6 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $vaga_procura_outra = $_POST['outraVaga'] ?? '';  
     $descricao_vaga = $_POST['desc'] ?? '';  
     $mensagem_contato = $_POST['mensagem'] ?? '';
+
+    // Se a vaga selecionada não for "Outra", o campo vaga_procura_outra será NULL
+    if ($vaga_procura !== 'Outra') {
+        $vaga_procura_outra = NULL;
+    }
 
     // Prepara a query de inserção no banco
     $stmt = $conn->prepare("INSERT INTO contatos 
@@ -45,3 +49,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $mensagem;
 }
 ?>
+
