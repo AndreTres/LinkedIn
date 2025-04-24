@@ -10,8 +10,8 @@
 <body>
   <header class="site-header">
     <div class="container">
-    <h1 class="titulo">Formulário de Contato</h1>
-    <button id="toggle-dark-mode" class="btn modo-escuro-btn">🌙 Modo Escuro</button>
+      <h1 class="titulo">Formulário de Contato</h1>
+      <button id="toggle-dark-mode" class="btn modo-escuro-btn">🌙 Modo Escuro</button>
     </div>
   </header>
 
@@ -20,55 +20,56 @@
     <form id="form-contato" action="backend/processa_contato.php" method="POST">
       <label for="nome">Nome Completo:</label>
       <input type="text" id="nome" name="nome" required>
-      
+
       <label for="email">E-mail:</label>
       <input type="email" id="email" name="email" required>
-      
+
       <label for="telefone">Telefone:</label>
       <input type="tel" id="telefone" name="telefone" placeholder="+55 (__) ____-____" required>
-      
+
       <label for="empresa">Empresa / Organização:</label>
       <input type="text" id="empresa" name="empresa" required>
-      
+
       <div class="form-group">
-      <label for="loc">Localização da Empresa:</label>
-      <input type="text" id="loc" name="localizacao" required>
-        
-  <label for="estado">Estado:</label>
-  <select id="estado" name="estado" required>
-    <option value="">Selecione o estado</option>
-    <option value="AC">Acre (AC)</option>
-    <option value="AL">Alagoas (AL)</option>
-    <option value="AP">Amapá (AP)</option>
-    <option value="AM">Amazonas (AM)</option>
-    <option value="BA">Bahia (BA)</option>
-    <option value="CE">Ceará (CE)</option>
-    <option value="DF">Distrito Federal (DF)</option>
-    <option value="ES">Espírito Santo (ES)</option>
-    <option value="GO">Goiás (GO)</option>
-    <option value="MA">Maranhão (MA)</option>
-    <option value="MT">Mato Grosso (MT)</option>
-    <option value="MS">Mato Grosso do Sul (MS)</option>
-    <option value="MG">Minas Gerais (MG)</option>
-    <option value="PA">Pará (PA)</option>
-    <option value="PB">Paraíba (PB)</option>
-    <option value="PR">Paraná (PR)</option>
-    <option value="PE">Pernambuco (PE)</option>
-    <option value="PI">Piauí (PI)</option>
-    <option value="RJ">Rio de Janeiro (RJ)</option>
-    <option value="RN">Rio Grande do Norte (RN)</option>
-    <option value="RS">Rio Grande do Sul (RS)</option>
-    <option value="RO">Rondônia (RO)</option>
-    <option value="RR">Roraima (RR)</option>
-    <option value="SC">Santa Catarina (SC)</option>
-    <option value="SP">São Paulo (SP)</option>
-    <option value="SE">Sergipe (SE)</option>
-    <option value="TO">Tocantins (TO)</option>
-  </select>
+        <label for="loc">Localização da Empresa:</label>
+        <input type="text" id="loc" name="localizacao" required>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+          <option value="">Selecione o estado</option>
+          <option value="AC">Acre (AC)</option>
+          <option value="AL">Alagoas (AL)</option>
+          <option value="AP">Amapá (AP)</option>
+          <option value="AM">Amazonas (AM)</option>
+          <option value="BA">Bahia (BA)</option>
+          <option value="CE">Ceará (CE)</option>
+          <option value="DF">Distrito Federal (DF)</option>
+          <option value="ES">Espírito Santo (ES)</option>
+          <option value="GO">Goiás (GO)</option>
+          <option value="MA">Maranhão (MA)</option>
+          <option value="MT">Mato Grosso (MT)</option>
+          <option value="MS">Mato Grosso do Sul (MS)</option>
+          <option value="MG">Minas Gerais (MG)</option>
+          <option value="PA">Pará (PA)</option>
+          <option value="PB">Paraíba (PB)</option>
+          <option value="PR">Paraná (PR)</option>
+          <option value="PE">Pernambuco (PE)</option>
+          <option value="PI">Piauí (PI)</option>
+          <option value="RJ">Rio de Janeiro (RJ)</option>
+          <option value="RN">Rio Grande do Norte (RN)</option>
+          <option value="RS">Rio Grande do Sul (RS)</option>
+          <option value="RO">Rondônia (RO)</option>
+          <option value="RR">Roraima (RR)</option>
+          <option value="SC">Santa Catarina (SC)</option>
+          <option value="SP">São Paulo (SP)</option>
+          <option value="SE">Sergipe (SE)</option>
+          <option value="TO">Tocantins (TO)</option>
+        </select>
       </div>
-<div class="form-group">
-  <label for="vaga">Vaga à Procura</label>
-      <select id="vaga" name="vaga" required>
+
+      <div class="form-group">
+        <label for="vaga">Vaga à Procura</label>
+        <select id="vaga" name="vaga" required>
           <option value="">Selecione uma opção</option>
           <option value="desenvolvedor_frontend">Desenvolvedor Front-end</option>
           <option value="desenvolvedor_backend">Desenvolvedor Back-end</option>
@@ -82,31 +83,40 @@
           <option value="analista_processos">Analista de Processos Jr</option>
           <option value="estagio_powerbi">Estágio em Power BI - Análise de Dados</option>
           <option value="Outra">Outra</option> 
-      </select>
-</div>
-<div class="form-group" id="outra-vaga-container" style="display: none;">
-  <label for="outraVaga">Se selecionou "Outra", qual vaga está procurando?</label>
-  <input type="text" id="outraVaga" name="outraVaga" placeholder="Digite o nome da vaga">
-</div>
+        </select>
+      </div>
+
+      <div class="form-group" id="outra-vaga-container" style="display: none;">
+        <label for="outraVaga">Se selecionou "Outra", qual vaga está procurando?</label>
+        <input type="text" id="outraVaga" name="outraVaga" placeholder="Digite o nome da vaga">
+      </div>
+
       <label for="assunto">Descrição da Vaga</label>
-            <textarea id="desc" name="desc" rows="10" required></textarea>
+      <textarea id="desc" name="desc" rows="10" required></textarea>
+
       <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-      <label>
-<div class="form-group checkbox-group">
-  <label class="checkbox-label">
-    <input type="checkbox" id="lgpd" name="lgpd" required>
-    <span class="checkbox-text">Concordo com o uso dos meus dados conforme a Lei Geral da Proteção de Dados</span>
-    </label>
-</div>
-      <button type="submit" class="btn">Enviar  Resposta</button>
-  </form>
-</form>
+      <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="lgpd" name="lgpd" required>
+          <span class="checkbox-text">Concordo com o uso dos meus dados conforme a Lei Geral da Proteção de Dados</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn">Enviar Resposta</button>
+    </form>
+
+    <!-- Mensagem de confirmação -->
+    <div id="mensagem-envio" class="mensagem-envio" style="display: none;">
+      <p>✅ Sua mensagem foi enviada com sucesso! Entrarei em contato em breve.</p>
+    </div>
   </section>
 
   <footer>
     <p>© 2025 André Tres. Todos os direitos reservados.</p>
   </footer>
+
   <script src="interact.js" defer></script>
 </body>
 </html>
