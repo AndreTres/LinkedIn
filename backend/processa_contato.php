@@ -5,31 +5,40 @@ error_reporting(E_ALL);
 include("conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome'] ?? '';
+    // Recebendo os dados do formulário
+    $nome = $_POST['nome'] ?? '';  
     $email = $_POST['email'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
     $empresa = $_POST['empresa'] ?? '';
     $localizacao = $_POST['localizacao'] ?? '';
     $estado = $_POST['estado'] ?? '';
-    $vaga_procura = $_POST['vaga'] ?? '';
-    $vaga_procura_outra = $_POST['outraVaga'] ?? '';
-    $descricao_vaga = $_POST['desc'] ?? '';
+    $vaga_procura = $_POST['vaga'] ?? '';  
+    $vaga_procura_outra = $_POST['outraVaga'] ?? '';  
+    $descricao_vaga = $_POST['desc'] ?? '';  
     $mensagem_contato = $_POST['mensagem'] ?? '';
 
-    // Verifica se todos os campos obrigatórios estão preenchidos
-    if (empty($nome) || empty($email)) {
-        echo "Nome e email são obrigatórios.";
-        exit;
-    }
+    // DEBUG: Exibe os dados recebidos
+    echo "<pre>";
+    echo "Dados recebidos do formulário:\n";
+    echo "Nome: $nome\n";
+    echo "Email: $email\n";
+    echo "Telefone: $telefone\n";
+    echo "Empresa: $empresa\n";
+    echo "Localização: $localizacao\n";
+    echo "Estado: $estado\n";
+    echo "Vaga: $vaga_procura\n";
+    echo "Outra Vaga: $vaga_procura_outra\n";
+    echo "Descrição: $descricao_vaga\n";
+    echo "Mensagem: $mensagem_contato\n";
+    echo "</pre>";
 
-    // Prepara a query
+    // Prepara a query de inserção no banco
     $stmt = $conn->prepare("INSERT INTO contatos 
-        (nome_completo, email, telefone, empresa, localizacao, estado, vaga_procura, vaga_procura_outra, descricao_vaga, mensagem) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    (nome_completo, email, telefone, empresa, localizacao, estado, vaga_procura, vaga_procura_outra, descricao_vaga, mensagem) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if (!$stmt) {
-        echo "Erro ao preparar a query: " . $conn->error;
-        exit;
+        die("Erro ao preparar a query: " . $conn->error);
     }
 
     $stmt->bind_param("ssssssssss", 
@@ -37,14 +46,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $vaga_procura, $vaga_procura_outra, $descricao_vaga, $mensagem_contato
     );
 
+    // Executa e verifica
     if ($stmt->execute()) {
-        echo "Dados inseridos com sucesso!";
+        echo "<p style='color: green;'>Dados inseridos com sucesso!</p>";
     } else {
-        echo "Erro ao executar: " . $stmt->error;
+        echo "<p style='color: red;'>Erro ao executar a query: " . $stmt->error . "</p>";
     }
 
     $stmt->close();
     $conn->close();
+}
+
 }
 ?>
 
