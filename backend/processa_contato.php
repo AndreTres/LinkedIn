@@ -1,7 +1,5 @@
-<?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<?php
+
 include("conexao.php");
 
 $mensagem = ""; // Variável para exibir mensagens de sucesso ou erro
@@ -19,15 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descricao_vaga = $_POST['desc'] ?? '';  
     $mensagem_contato = $_POST['mensagem'] ?? '';
 
-    // Se a vaga selecionada não for "Outra", o campo vaga_procura_outra será NULL
-    if ($vaga_procura !== 'Outra') {
-        $vaga_procura_outra = NULL;
-    }
-
     // Prepara a query de inserção no banco
     $stmt = $conn->prepare("INSERT INTO contatos 
     (nome_completo, email, telefone, empresa, localizacao, estado, vaga_procura, vaga_procura_outra, descricao_vaga, mensagem) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    // Verifica se o prepare funcionou corretamente
+    if (!$stmt) {
+        die("Erro no prepare: " . $conn->error);
+    }
 
     // Fazendo o bind dos parâmetros
     $stmt->bind_param("ssssssssss", 
@@ -35,13 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $vaga_procura, $vaga_procura_outra, $descricao_vaga, $mensagem_contato
     );
 
-    // Executa a query e verifica se foi bem-sucedido
-    if ($stmt->execute()) {
-        // Mensagem de sucesso
-        $mensagem = "Sua mensagem foi enviada com sucesso!";
+    // Executa a query e verifica se foi bem-sucedida
+    if (!$stmt->execute()) {
+        die("Erro no execute: " . $stmt->error);
     } else {
-        // Mensagem de erro
-        $mensagem = "Erro ao enviar. Tente novamente mais tarde.";
+        $mensagem = "Sua mensagem foi enviada com sucesso!";
     }
 
     // Fecha a conexão
@@ -52,4 +48,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $mensagem;
 }
 ?>
+
 
