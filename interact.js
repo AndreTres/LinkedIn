@@ -1,5 +1,5 @@
 // Mostrar ou ocultar o botão "Voltar ao topo" conforme o scroll
-function handleScroll() {
+window.onscroll = function () {
   const btn = document.getElementById("btnTopo");
   if (btn) {
     btn.style.display =
@@ -7,86 +7,116 @@ function handleScroll() {
         ? "block"
         : "none";
   }
-}
-window.addEventListener("scroll", handleScroll);
+};
 
 // Ao clicar no botão, volta suavemente para o topo
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
 const btnTopo = document.getElementById("btnTopo");
 if (btnTopo) {
-  btnTopo.addEventListener("click", scrollToTop);
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 // Alternância de tema com persistência via localStorage
-function toggleTheme() {
-  const body = document.body;
-  const toggle = document.getElementById("toggle-dark-mode");
+const toggle = document.getElementById("toggle-dark-mode");
+const body = document.body;
 
-  body.classList.toggle("dark-mode");
-  if (body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-    toggle.textContent = "☀️ Modo Claro";
-  } else {
-    localStorage.setItem("theme", "light");
-    toggle.textContent = "🌙 Modo Escuro";
-  }
-}
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
-  document.body.classList.add("dark-mode");
-  document.getElementById("toggle-dark-mode").textContent = "☀️ Modo Claro";
+  body.classList.add("dark-mode");
+  toggle.textContent = "☀️ Modo Claro";
 } else {
-  document.getElementById("toggle-dark-mode").textContent = "🌙 Modo Escuro";
+  toggle.textContent = "🌙 Modo Escuro";
 }
-document.getElementById("toggle-dark-mode")?.addEventListener("click", toggleTheme);
+
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      toggle.textContent = "☀️ Modo Claro";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggle.textContent = "🌙 Modo Escuro";
+    }
+  });
+}
 
 // Animação ao clicar nos botões de ação (CTA)
-document.querySelectorAll(".btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.add("clicked");
+document.querySelectorAll('.btn').forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.add('clicked');
     setTimeout(() => {
-      button.classList.remove("clicked");
+      button.classList.remove('clicked');
     }, 200);
   });
 });
 
-// Animação das seções (visibilidade ao rolar a página)
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
+// Animação das seções
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("section-visible");
       entry.target.classList.remove("section-hidden");
     }
   });
-}, observerOptions);
+}, { threshold: 0.1 });
 
-document.querySelectorAll("section").forEach((section) => {
+sections.forEach(section => {
   section.classList.add("section-hidden");
   observer.observe(section);
 });
 
 // Mostrar/ocultar galeria de certificados
-function toggleCertificados() {
-  const galeria = document.getElementById("certificados");
-  if (galeria) {
+const botaoCertificados = document.getElementById("ver-certificados");
+const galeria = document.getElementById("certificados");
+
+if (botaoCertificados && galeria) {
+  botaoCertificados.addEventListener("click", () => {
     galeria.style.display =
       galeria.style.display === "none" || galeria.style.display === ""
         ? "block"
         : "none";
+  });
+}
+
+// Mostrar campo adicional ao selecionar "Outra" vaga
+const selectVaga = document.getElementById("vaga");
+const outraVagaContainer = document.getElementById("outra-vaga-container");
+
+function verificarOutraVaga() {
+  if (selectVaga && outraVagaContainer) {
+    outraVagaContainer.style.display = selectVaga.value === "Outra" ? "block" : "none";
   }
 }
-const botaoCertificados = document.getElementById("ver-certificados");
-botaoCertificados?.addEventListener("click", toggleCertificados);
 
-// Mostrar campo "Outra vaga" se selecionado no formulário
-document.getElementById("vaga")?.addEventListener("change", function () {
-  const outraVagaContainer = document.getElementById("outra-vaga-container");
-  if (this.value === "Outra") {
-    outraVagaContainer.style.display = "block";
-  } else {
-    outraVagaContainer.style.display = "none";
+if (selectVaga) {
+  selectVaga.addEventListener("change", verificarOutraVaga);
+  verificarOutraVaga(); // Verifica estado inicial
+}
+
+// Interceptar envio do formulário e exibir mensagem na mesma página
+document.addEventListener("DOMContentLoaded", () => {
+  const formulario = document.getElementById("form-contato");
+
+  if (formulario) {
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault(); // Impede envio tradicional
+
+      setTimeout(() => {
+        const mensagem = document.createElement("div");
+        mensagem.className = "mensagem-confirmacao";
+        mensagem.innerHTML = `
+          <p><strong>✔ Sua resposta foi enviada com sucesso!</strong></p>
+          <p>Obrigado pelo contato. Entrarei em breve em comunicação com você.</p>
+        `;
+
+        formulario.parentNode.insertBefore(mensagem, formulario);
+        formulario.reset(); // Limpa o formulário
+        formulario.style.display = "none"; // Oculta o formulário (opcional)
+      }, 500); // Simulando tempo de resposta
+    });
   }
 });
