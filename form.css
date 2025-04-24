@@ -243,3 +243,22 @@ body.dark-mode .form-group select {
   color: #fff;
   border-color: #555;
 }
+.mensagem-sucesso {
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #eafaf1;
+  color: #2ecc71;
+  border: 1px solid #2ecc71;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+body.dark-mode .mensagem-sucesso {
+  background-color: #1e2e24;
+  color: #2ecc71;
+  border-color: #27ae60;
+}
