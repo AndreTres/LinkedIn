@@ -97,7 +97,7 @@ if (selectVaga) {
   verificarOutraVaga(); // Verifica estado inicial
 }
 
-// Interceptar envio do formulário e exibir mensagem na mesma página
+// Envio do formulário com fetch e exibição da mensagem sem recarregar a página
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.getElementById("form-contato");
 
@@ -105,18 +105,25 @@ document.addEventListener("DOMContentLoaded", () => {
     formulario.addEventListener("submit", function (e) {
       e.preventDefault(); // Impede envio tradicional
 
-      setTimeout(() => {
+      const formData = new FormData(formulario);
+
+      fetch("backend/processa_contato.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
         const mensagem = document.createElement("div");
         mensagem.className = "mensagem-confirmacao";
-        mensagem.innerHTML = `
-          <p><strong>✔ Sua resposta foi enviada com sucesso!</strong></p>
-          <p>Obrigado pelo contato. Entrarei em breve em comunicação com você.</p>
-        `;
+        mensagem.innerHTML = data;
 
         formulario.parentNode.insertBefore(mensagem, formulario);
-        formulario.reset(); // Limpa o formulário
-        formulario.style.display = "none"; // Oculta o formulário (opcional)
-      }, 500); // Simulando tempo de resposta
+        formulario.reset();
+        formulario.style.display = "none";
+      })
+      .catch(error => {
+        console.error("Erro ao enviar o formulário:", error);
+      });
     });
   }
 });
