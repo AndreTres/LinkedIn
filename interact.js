@@ -103,27 +103,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (formulario) {
     formulario.addEventListener("submit", function (e) {
-      e.preventDefault(); // Impede envio tradicional apenas para prevenir o comportamento padrão enquanto testamos
+      e.preventDefault(); // Impede o envio tradicional do formulário
 
-      // Mensagem de sucesso (para testes)
-      const mensagem = document.createElement("div");
-      mensagem.className = "mensagem-confirmacao";
-      mensagem.innerHTML = "<p style='color: green;'>Sua mensagem foi enviada com sucesso!</p>";
+      const formData = new FormData(formulario); // Coleta os dados do formulário
 
-      // Insere a mensagem antes do formulário
-      formulario.parentNode.insertBefore(mensagem, formulario);
+      fetch(formulario.action, {
+        method: 'POST', // Envia os dados via POST
+        body: formData
+      })
+      .then(response => response.text()) // Espera a resposta do servidor
+      .then(data => {
+        const mensagem = document.createElement("div");
+        mensagem.className = "mensagem-confirmacao";
+        mensagem.innerHTML = "<p style='color: green;'>Sua mensagem foi enviada com sucesso!</p>";
 
-      // Limpa e oculta o formulário
-      formulario.reset();
-      formulario.style.display = "none";
+        // Exibe a mensagem de sucesso antes do formulário
+        formulario.parentNode.insertBefore(mensagem, formulario);
 
-      // Remove a mensagem após 5 segundos
-      setTimeout(() => {
-        mensagem.remove();
-      }, 5000);
+        // Limpa o formulário e oculta após o envio
+        formulario.reset();
+        formulario.style.display = "none";
 
-      // Envia o formulário de forma tradicional (após o teste)
-      formulario.submit();
+        // Remove a mensagem após 5 segundos
+        setTimeout(() => {
+          mensagem.remove();
+        }, 5000);
+      })
+      .catch(error => {
+        console.error('Erro ao enviar:', error);
+
+        // Exibe a mensagem de erro em caso de falha
+        const mensagemErro = document.createElement("div");
+        mensagemErro.className = "mensagem-erro";
+        mensagemErro.innerHTML = "<p style='color: red;'>Erro ao enviar. Tente novamente mais tarde.</p>";
+        formulario.parentNode.insertBefore(mensagemErro, formulario);
+
+        // Remove a mensagem de erro após 5 segundos
+        setTimeout(() => {
+          mensagemErro.remove();
+        }, 5000);
+      });
     });
   }
 });
