@@ -117,9 +117,17 @@ document.addEventListener("DOMContentLoaded", () => {
         mensagem.className = "mensagem-confirmacao";
         mensagem.innerHTML = data;
 
+        // Insere a mensagem antes do formulário
         formulario.parentNode.insertBefore(mensagem, formulario);
+
+        // Limpa e oculta o formulário
         formulario.reset();
         formulario.style.display = "none";
+
+        // Remove a mensagem após 5 segundos
+        setTimeout(() => {
+          mensagem.remove();
+        }, 5000);
       })
       .catch(error => {
         console.error("Erro ao enviar o formulário:", error);
