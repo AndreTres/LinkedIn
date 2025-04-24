@@ -97,41 +97,33 @@ if (selectVaga) {
   verificarOutraVaga(); // Verifica estado inicial
 }
 
-// Envio do formulário com fetch e exibição da mensagem sem recarregar a página
+// Envio do formulário sem o uso de fetch (envio tradicional)
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.getElementById("form-contato");
 
   if (formulario) {
     formulario.addEventListener("submit", function (e) {
-      e.preventDefault(); // Impede envio tradicional
+      e.preventDefault(); // Impede envio tradicional apenas para prevenir o comportamento padrão enquanto testamos
 
-      const formData = new FormData(formulario);
+      // Mensagem de sucesso (para testes)
+      const mensagem = document.createElement("div");
+      mensagem.className = "mensagem-confirmacao";
+      mensagem.innerHTML = "<p style='color: green;'>Sua mensagem foi enviada com sucesso!</p>";
 
-      fetch("backend/processa_contato.php", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.text())
-      .then(data => {
-        const mensagem = document.createElement("div");
-        mensagem.className = "mensagem-confirmacao";
-        mensagem.innerHTML = data;
+      // Insere a mensagem antes do formulário
+      formulario.parentNode.insertBefore(mensagem, formulario);
 
-        // Insere a mensagem antes do formulário
-        formulario.parentNode.insertBefore(mensagem, formulario);
+      // Limpa e oculta o formulário
+      formulario.reset();
+      formulario.style.display = "none";
 
-        // Limpa e oculta o formulário
-        formulario.reset();
-        formulario.style.display = "none";
+      // Remove a mensagem após 5 segundos
+      setTimeout(() => {
+        mensagem.remove();
+      }, 5000);
 
-        // Remove a mensagem após 5 segundos
-        setTimeout(() => {
-          mensagem.remove();
-        }, 5000);
-      })
-      .catch(error => {
-        console.error("Erro ao enviar o formulário:", error);
-      });
+      // Envia o formulário de forma tradicional (após o teste)
+      formulario.submit();
     });
   }
 });
