@@ -111,24 +111,37 @@ document.addEventListener("DOMContentLoaded", () => {
         method: 'POST',
         body: formData
       })
-        .then(response => response.text())
+        .then(response => response.json())  // Altere para .json()
         .then(data => {
-          // Exibe a resposta recebida do PHP
-          const mensagem = document.createElement("div");
-          mensagem.className = "mensagem-confirmacao";
-          mensagem.innerHTML = data;
+          if (data.status === 'success') {
+            // Exibe a resposta recebida do PHP
+            const mensagem = document.createElement("div");
+            mensagem.className = "mensagem-confirmacao";
+            mensagem.innerHTML = data.message;  // Use data.message que é a resposta do PHP
 
-          // Exibe a mensagem antes do formulário
-          formulario.parentNode.insertBefore(mensagem, formulario);
+            // Exibe a mensagem antes do formulário
+            formulario.parentNode.insertBefore(mensagem, formulario);
 
-          // Limpa o formulário e oculta após envio
-          formulario.reset();
-          formulario.style.display = "none";
+            // Limpa o formulário e oculta após envio
+            formulario.reset();
+            formulario.style.display = "none";
 
-          // Remove a mensagem após 5 segundos
-          setTimeout(() => {
-            mensagem.remove();
-          }, 5000);
+            // Remove a mensagem após 5 segundos
+            setTimeout(() => {
+              mensagem.remove();
+            }, 5000);
+          } else {
+            // Se for erro
+            const mensagemErro = document.createElement("div");
+            mensagemErro.className = "mensagem-erro";
+            mensagemErro.innerHTML = `<p style='color: red;'>${data.message}</p>`;  // Mostra o erro retornado
+
+            formulario.parentNode.insertBefore(mensagemErro, formulario);
+
+            setTimeout(() => {
+              mensagemErro.remove();
+            }, 5000);
+          }
         })
         .catch(error => {
           console.error("Erro ao enviar:", error);
