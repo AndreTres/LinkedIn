@@ -45,6 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $conn->close();
 
-    echo json_encode($response); // Envia a resposta para o JavaScript
-}
+    
+    header('Content-Type: application/json');  
+    echo json_encode($response); 
+} 
 ?>
+
