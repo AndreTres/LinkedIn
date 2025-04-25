@@ -97,53 +97,51 @@ if (selectVaga) {
   verificarOutraVaga(); // Verifica estado inicial
 }
 
-// Envio do formulário sem o uso de fetch (envio tradicional)
+// Envio do formulário com fetch e confirmação sem redirecionamento
 document.addEventListener("DOMContentLoaded", () => {
   const formulario = document.getElementById("form-contato");
 
   if (formulario) {
     formulario.addEventListener("submit", function (e) {
-      e.preventDefault(); // Impede o envio tradicional do formulário
+      e.preventDefault(); // Impede o envio tradicional
 
-      const formData = new FormData(formulario); // Coleta os dados do formulário
+      const formData = new FormData(formulario);
 
       fetch(formulario.action, {
-        method: 'POST', // Envia os dados via POST
+        method: 'POST',
         body: formData
       })
-      .then(response => response.text()) // Espera a resposta do servidor
-      .then(data => {
-        const mensagem = document.createElement("div");
-        mensagem.className = "mensagem-confirmacao";
-        mensagem.innerHTML = "<p style='color: green;'>Sua mensagem foi enviada com sucesso!</p>";
+        .then(response => response.text())
+        .then(data => {
+          // Exibe a resposta recebida do PHP
+          const mensagem = document.createElement("div");
+          mensagem.className = "mensagem-confirmacao";
+          mensagem.innerHTML = data;
 
-        // Exibe a mensagem de sucesso antes do formulário
-        formulario.parentNode.insertBefore(mensagem, formulario);
+          // Exibe a mensagem antes do formulário
+          formulario.parentNode.insertBefore(mensagem, formulario);
 
-        // Limpa o formulário e oculta após o envio
-        formulario.reset();
-        formulario.style.display = "none";
+          // Limpa o formulário e oculta após envio
+          formulario.reset();
+          formulario.style.display = "none";
 
-        // Remove a mensagem após 5 segundos
-        setTimeout(() => {
-          mensagem.remove();
-        }, 5000);
-      })
-      .catch(error => {
-        console.error('Erro ao enviar:', error);
+          // Remove a mensagem após 5 segundos
+          setTimeout(() => {
+            mensagem.remove();
+          }, 5000);
+        })
+        .catch(error => {
+          console.error("Erro ao enviar:", error);
+          const mensagemErro = document.createElement("div");
+          mensagemErro.className = "mensagem-erro";
+          mensagemErro.innerHTML = "<p style='color: red;'>Erro ao enviar. Tente novamente mais tarde.</p>";
 
-        // Exibe a mensagem de erro em caso de falha
-        const mensagemErro = document.createElement("div");
-        mensagemErro.className = "mensagem-erro";
-        mensagemErro.innerHTML = "<p style='color: red;'>Erro ao enviar. Tente novamente mais tarde.</p>";
-        formulario.parentNode.insertBefore(mensagemErro, formulario);
+          formulario.parentNode.insertBefore(mensagemErro, formulario);
 
-        // Remove a mensagem de erro após 5 segundos
-        setTimeout(() => {
-          mensagemErro.remove();
-        }, 5000);
-      });
+          setTimeout(() => {
+            mensagemErro.remove();
+          }, 5000);
+        });
     });
   }
 });
-
