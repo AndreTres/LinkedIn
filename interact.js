@@ -100,35 +100,44 @@ form.addEventListener("submit", (e) => {
   })
     .then(response => response.json()) // Espera que o servidor retorne um JSON
     .then(data => {
-      // Exibir mensagem de sucesso com base na resposta do servidor
+      // Primeiro, limpa as classes anteriores
+      messageContainer.className = 'mensagem-sucesso'; 
+
       if (data.success) {
         messageContainer.textContent = "Formulário enviado com sucesso!";
-        messageContainer.classList.add("success");
-        messageContainer.style.display = "block";
+        messageContainer.classList.add("success", "mostrar");
 
-        //limpar campos do formulário
+        // Limpar campos do formulário
         form.reset();
       } else {
         messageContainer.textContent = "Erro no envio do formulário. Tente novamente.";
-        messageContainer.classList.remove("success");
-        messageContainer.classList.add("error");
-        messageContainer.style.display = "block";
+        messageContainer.classList.add("error", "mostrar");
       }
 
       // Remover a mensagem após 5 segundos
       setTimeout(() => {
-        messageContainer.style.display = "none";
+        messageContainer.classList.remove("mostrar");
+
+        // Após o fade-out (meio segundo), remove também o texto para evitar flashes
+        setTimeout(() => {
+          messageContainer.textContent = "";
+        }, 500);
       }, 5000);
     })
     .catch(error => {
       console.error("Erro ao enviar o formulário:", error);
+
+      messageContainer.className = 'mensagem-sucesso';
       messageContainer.textContent = "Ocorreu um erro ao enviar o formulário.";
-      messageContainer.classList.add("error");
-      messageContainer.style.display = "block";
+      messageContainer.classList.add("error", "mostrar");
 
       // Remover a mensagem após 5 segundos
       setTimeout(() => {
-        messageContainer.style.display = "none";
+        messageContainer.classList.remove("mostrar");
+
+        setTimeout(() => {
+          messageContainer.textContent = "";
+        }, 500);
       }, 5000);
     });
 });
