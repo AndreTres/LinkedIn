@@ -84,8 +84,8 @@ if (selectVaga) {
 }
 
 // Exibir mensagem de sucesso após envio do formulário
-const form = document.getElementById("form-contato");
-const messageContainer = document.getElementById("message");
+const form = document.getElementById("formContato");
+const messageContainer = document.getElementById("mensagem-sucesso");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // Prevenir o comportamento padrão de envio
