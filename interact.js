@@ -83,22 +83,48 @@ if (selectVaga) {
   verificarOutraVaga();
 }
 
-// Exibir e remover mensagem de sucesso/erro após envio do formulário
-const form = document.querySelector("form");
+// Exibir mensagem de sucesso após envio do formulário
+const form = document.getElementById("form-contato");
 const messageContainer = document.getElementById("message");
 
-if (form && messageContainer) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Evitar o envio real do formulário durante os testes
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevenir o comportamento padrão de envio
 
-    // Exibir mensagem de sucesso
-    messageContainer.textContent = "Formulário enviado com sucesso!";
-    messageContainer.classList.add("success");
-    messageContainer.style.display = "block";
+  // Obter os dados do formulário
+  const formData = new FormData(form);
 
-    // Remover a mensagem após 5 segundos
-    setTimeout(() => {
-      messageContainer.style.display = "none";
-    }, 5000);
-  });
-}
+  // Simulação de envio dos dados com fetch (AJAX)
+  fetch('backend/processa_contato.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json()) // Espera que o servidor retorne um JSON
+    .then(data => {
+      // Exibir mensagem de sucesso com base na resposta do servidor
+      if (data.success) {
+        messageContainer.textContent = "Formulário enviado com sucesso!";
+        messageContainer.classList.add("success");
+        messageContainer.style.display = "block";
+      } else {
+        messageContainer.textContent = "Erro no envio do formulário. Tente novamente.";
+        messageContainer.classList.add("error");
+        messageContainer.style.display = "block";
+      }
+
+      // Remover a mensagem após 5 segundos
+      setTimeout(() => {
+        messageContainer.style.display = "none";
+      }, 5000);
+    })
+    .catch(error => {
+      console.error("Erro ao enviar o formulário:", error);
+      messageContainer.textContent = "Ocorreu um erro ao enviar o formulário.";
+      messageContainer.classList.add("error");
+      messageContainer.style.display = "block";
+
+      // Remover a mensagem após 5 segundos
+      setTimeout(() => {
+        messageContainer.style.display = "none";
+      }, 5000);
+    });
+});
