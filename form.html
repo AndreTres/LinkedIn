@@ -17,7 +17,7 @@
 
   <section id="formulario-contato">
     <h2>Dê o Primeiro Passo</h2>
-    <form method="POST" action="backend/processa_contato.php">
+    <form method="POST" action="backend/processa_contato.php" id="form-contato">
       <label for="nome">Nome Completo:</label>
       <input type="text" id="nome" name="nome" required>
 
@@ -106,6 +106,10 @@
 
       <button type="submit" class="btn">Enviar Resposta</button>
     </form>
+
+    <div class="mensagem-sucesso" id="mensagem-sucesso">
+      <span class="icon"><i class="fas fa-check-circle"></i></span> Sua resposta foi enviada com sucesso!
+    </div>
   </section>
 
   <footer>
