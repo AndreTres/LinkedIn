@@ -2,6 +2,9 @@
 // Incluindo o arquivo de conexão com o banco de dados
 include('conexao.php');
 
+// Inicializando a resposta
+$response = array('status' => 'error', 'message' => 'Erro ao enviar dados.');
+
 // Verificando se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Pegando os dados do formulário
@@ -23,12 +26,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executando a query
     if ($conn->query($sql) === TRUE) {
-        echo "Dados enviados com sucesso!";
+        // Sucesso: preparando a resposta
+        $response = array(
+            'status' => 'success',
+            'message' => 'Dados enviados com sucesso!'
+        );
     } else {
-        echo "Erro ao enviar dados: " . $conn->error;
+        // Erro ao executar a query
+        $response = array(
+            'status' => 'error',
+            'message' => 'Erro ao enviar dados: ' . $conn->error
+        );
     }
 }
 
 // Fechando a conexão
 $conn->close();
+
+// Retornando a resposta como JSON
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>
