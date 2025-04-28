@@ -267,6 +267,7 @@ body.dark-mode .form-group select {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .mensagem-sucesso.mostrar {
+  display: block;
   opacity: 1; 
 }
 
