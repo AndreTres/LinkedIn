@@ -122,7 +122,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #218838;
-  transform: scale (1.02);
+  transform: scale(1.02);
 }
 
 /* Efeito ao clicar */
@@ -255,7 +255,9 @@ body.dark-mode .form-group select {
 /* Estilo para a mensagem de sucesso */
 .mensagem-sucesso {
   display: none; 
+  opacity: 0;
   width: 100%;
+  min-height: 60px;
   padding: 12px 20px;
   margin-top: 15px;
   border-radius: 8px;
@@ -263,6 +265,9 @@ body.dark-mode .form-group select {
   font-weight: bold;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.mensagem-sucesso.mostrar {
+  opacity: 1; 
 }
 
 .mensagem-sucesso.success {
@@ -277,7 +282,7 @@ body.dark-mode .form-group select {
   border: 1px solid #f5c6cb;
 }
 
-.mensagem-sucesso .icon {
+.mensagem-sucesso.icon {
   margin-right: 10px;
 }
 
