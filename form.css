@@ -255,6 +255,7 @@ body.dark-mode .form-group select {
 /* Estilo para a mensagem de sucesso */
 .mensagem-sucesso {
   display: none; 
+  width: 100%;
   padding: 12px 20px;
   margin-top: 15px;
   border-radius: 8px;
