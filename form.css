@@ -243,22 +243,31 @@ body.dark-mode .form-group select {
   color: #fff;
   border-color: #555;
 }
+/* Estilo para a mensagem de sucesso */
 .mensagem-sucesso {
+  display: none; 
+  background-color: #28a745; 
+  color: #fff; 
+  padding: 15px;
   margin-top: 20px;
-  padding: 15px 20px;
   border-radius: 8px;
-  background-color: #eafaf1;
-  color: #2ecc71;
-  border: 1px solid #2ecc71;
+  font-size: 1.2em;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  animation: fadeIn 0.4s ease-in-out;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-in-out;
 }
 
+.mensagem-sucesso.exibida {
+  display: block;
+  opacity: 1;
+}
+
+.mensagem-sucesso .icon {
+  margin-right: 10px;
+}
+
+/* Ajustes para o modo escuro */
 body.dark-mode .mensagem-sucesso {
-  background-color: #1e2e24;
-  color: #2ecc71;
-  border-color: #27ae60;
+  background-color: #218838; 
 }
