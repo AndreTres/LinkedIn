@@ -105,8 +105,12 @@ form.addEventListener("submit", (e) => {
         messageContainer.textContent = "Formulário enviado com sucesso!";
         messageContainer.classList.add("success");
         messageContainer.style.display = "block";
+
+        //limpar campos do formulário
+        form.reset();
       } else {
         messageContainer.textContent = "Erro no envio do formulário. Tente novamente.";
+        messageContainer.classList.remove("success");
         messageContainer.classList.add("error");
         messageContainer.style.display = "block";
       }
