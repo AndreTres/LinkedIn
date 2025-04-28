@@ -82,3 +82,23 @@ if (selectVaga) {
   selectVaga.addEventListener("change", verificarOutraVaga);
   verificarOutraVaga();
 }
+
+// Exibir e remover mensagem de sucesso/erro após envio do formulário
+const form = document.querySelector("form");
+const messageContainer = document.getElementById("message");
+
+if (form && messageContainer) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Evitar o envio real do formulário durante os testes
+
+    // Exibir mensagem de sucesso
+    messageContainer.textContent = "Formulário enviado com sucesso!";
+    messageContainer.classList.add("success");
+    messageContainer.style.display = "block";
+
+    // Remover a mensagem após 5 segundos
+    setTimeout(() => {
+      messageContainer.style.display = "none";
+    }, 5000);
+  });
+}
