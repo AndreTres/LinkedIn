@@ -2,8 +2,8 @@
 // Incluindo o arquivo de conexão com o banco de dados
 include('conexao.php');
 
-// Inicializando a resposta
-$response = array('status' => 'error', 'message' => 'Erro ao enviar dados.');
+// Definir o cabeçalho como JSON
+header('Content-Type: application/json');
 
 // Verificando se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,24 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executando a query
     if ($conn->query($sql) === TRUE) {
-        // Sucesso: preparando a resposta
-        $response = array(
-            'status' => 'success',
-            'message' => 'Dados enviados com sucesso!'
-        );
+        echo json_encode(["success" => true]); // Retorna sucesso em formato JSON
     } else {
-        // Erro ao executar a query
-        $response = array(
-            'status' => 'error',
-            'message' => 'Erro ao enviar dados: ' . $conn->error
-        );
+        echo json_encode(["success" => false, "message" => "Erro ao enviar dados: " . $conn->error]); // Retorna erro em formato JSON
     }
 }
 
 // Fechando a conexão
 $conn->close();
-
-// Retornando a resposta como JSON
-header('Content-Type: application/json');
-echo json_encode($response);
 ?>
