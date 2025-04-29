@@ -144,22 +144,22 @@ form.addEventListener("submit", (e) => {
 // Função de auto-preenchimento do número de telefone e e-mail
 const campoTelefone = document.getElementById("telefone");
 const campoEmail = document.getElementById("email");
-// Máscara para telefone com preservação do cursor e sem bugs
-campoTelefone.addEventListener("input", function (e) {
-  let valor = campoTelefone.value;
 
-  const numeros = valor.replace(/\D/g, "").substring(0, 11); 
+campoTelefone.addEventListener("input", function (e) {
+  
+  let numeros = campoTelefone.value.replace(/\D/g, "").substring(0, 11);
 
   let formatado = "";
 
-  if (numeros.length > 0) {
+  if (numeros.length >= 1) {
     formatado += "+55 ";
   }
-  if (numeros.length > 2) {
+
+  if (numeros.length >= 3) {
     formatado += `(${numeros.slice(0, 2)}) `;
-    if (numeros.length > 7) {
+    if (numeros.length >= 8) {
       formatado += `${numeros.slice(2, 7)}-${numeros.slice(7)}`;
-    } else {
+    } else if (numeros.length > 2) {
       formatado += numeros.slice(2);
     }
   } else {
