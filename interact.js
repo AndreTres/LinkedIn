@@ -145,17 +145,29 @@ form.addEventListener("submit", (e) => {
 const campoTelefone = document.getElementById("telefone");
 const campoEmail = document.getElementById("email");
 
-// Máscara para telefone
+// Máscara para telefone com formatação estável
 campoTelefone.addEventListener("input", function (e) {
-  let input = e.target.value.replace(/\D/g, "").substring(0, 13);
+  let input = e.target.value.replace(/\D/g, "").substring(0, 11); // Máximo 11 dígitos (ex: 11999999999)
 
-  if (input.length > 0) input = "+55 (" + input;
-  if (input.length > 6) input = input.slice(0, 6) + ") " + input.slice(6);
-  if (input.length > 12) input = input.slice(0, 12) + "-" + input.slice(12);
+  let formatado = "";
 
-  campoTelefone.value = input;
+  if (input.length > 0) {
+    formatado = "+55 ";
+  }
+  if (input.length >= 2) {
+    formatado += "(" + input.substring(0, 2) + ") ";
+  }
+  if (input.length > 2 && input.length <= 7) {
+    formatado += input.substring(2);
+  }
+  if (input.length > 7) {
+    formatado += input.substring(2, 7) + "-" + input.substring(7);
+  }
+
+  campoTelefone.value = formatado;
 });
 
+// Impede colagem no campo de telefone
 campoTelefone.addEventListener("paste", function (e) {
   e.preventDefault();
 });
@@ -166,9 +178,9 @@ form.addEventListener("submit", function (e) {
   const email = campoEmail.value.trim();
   const padraoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (telefoneLimpo.length !== 13) {
+  if (telefoneLimpo.length !== 11) {
     e.preventDefault();
-    alert("Por favor, insira um número de telefone válido com DDD no formato: +55 (  ) _____-____");
+    alert("Por favor, insira um número de telefone válido com DDD no formato: +55 (XX) XXXXX-XXXX");
     campoTelefone.focus();
     return;
   }
