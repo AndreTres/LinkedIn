@@ -145,34 +145,29 @@ form.addEventListener("submit", (e) => {
 const campoTelefone = document.getElementById("telefone");
 const campoEmail = document.getElementById("email");
 
-// Máscara para telefone com formatação estável
+// Máscara para telefone sem duplicações
 campoTelefone.addEventListener("input", function (e) {
-  let input = e.target.value.replace(/\D/g, "").substring(0, 11); // Máximo 11 dígitos (ex: 11999999999)
+  const input = e.target;
+  const numero = input.value.replace(/\D/g, "").substring(0, 11); // Apenas números, no máx. 11 dígitos
+  const ddd = numero.substring(0, 2);
+  const parte1 = numero.substring(2, 7);
+  const parte2 = numero.substring(7, 11);
 
-  let formatado = "";
+  let resultado = "";
+  if (numero.length > 0) resultado = "+55 ";
+  if (numero.length >= 1) resultado += `(${ddd}`;
+  if (numero.length >= 3) resultado += `) ${parte1}`;
+  if (numero.length >= 8) resultado += `-${parte2}`;
 
-  if (input.length > 0) {
-    formatado = "+55 ";
-  }
-  if (input.length >= 2) {
-    formatado += "(" + input.substring(0, 2) + ") ";
-  }
-  if (input.length > 2 && input.length <= 7) {
-    formatado += input.substring(2);
-  }
-  if (input.length > 7) {
-    formatado += input.substring(2, 7) + "-" + input.substring(7);
-  }
-
-  campoTelefone.value = formatado;
+  input.value = resultado;
 });
 
-// Impede colagem no campo de telefone
+// Impede colagem
 campoTelefone.addEventListener("paste", function (e) {
   e.preventDefault();
 });
 
-// Validação no envio
+// Validação de telefone e email no envio
 form.addEventListener("submit", function (e) {
   const telefoneLimpo = campoTelefone.value.replace(/\D/g, "");
   const email = campoEmail.value.trim();
@@ -180,7 +175,7 @@ form.addEventListener("submit", function (e) {
 
   if (telefoneLimpo.length !== 11) {
     e.preventDefault();
-    alert("Por favor, insira um número de telefone válido com DDD no formato: +55 (XX) XXXXX-XXXX");
+    alert("Por favor, insira um número de telefone válido no formato: +55 (XX) XXXXX-XXXX");
     campoTelefone.focus();
     return;
   }
