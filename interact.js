@@ -144,25 +144,32 @@ form.addEventListener("submit", (e) => {
 // Função de auto-preenchimento do número de telefone e e-mail
 const campoTelefone = document.getElementById("telefone");
 const campoEmail = document.getElementById("email");
-
-// Máscara para telefone sem duplicações
+// Máscara para telefone com preservação do cursor e sem bugs
 campoTelefone.addEventListener("input", function (e) {
-  const input = e.target;
-  const numero = input.value.replace(/\D/g, "").substring(0, 11); // Apenas números, no máx. 11 dígitos
-  const ddd = numero.substring(0, 2);
-  const parte1 = numero.substring(2, 7);
-  const parte2 = numero.substring(7, 11);
+  let valor = campoTelefone.value;
 
-  let resultado = "";
-  if (numero.length > 0) resultado = "+55 ";
-  if (numero.length >= 1) resultado += `(${ddd}`;
-  if (numero.length >= 3) resultado += `) ${parte1}`;
-  if (numero.length >= 8) resultado += `-${parte2}`;
+  const numeros = valor.replace(/\D/g, "").substring(0, 11); 
 
-  input.value = resultado;
+  let formatado = "";
+
+  if (numeros.length > 0) {
+    formatado += "+55 ";
+  }
+  if (numeros.length > 2) {
+    formatado += `(${numeros.slice(0, 2)}) `;
+    if (numeros.length > 7) {
+      formatado += `${numeros.slice(2, 7)}-${numeros.slice(7)}`;
+    } else {
+      formatado += numeros.slice(2);
+    }
+  } else {
+    formatado += numeros;
+  }
+
+  campoTelefone.value = formatado;
 });
 
-// Impede colagem
+// Impede colar texto fora do padrão
 campoTelefone.addEventListener("paste", function (e) {
   e.preventDefault();
 });
