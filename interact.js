@@ -141,3 +141,42 @@ form.addEventListener("submit", (e) => {
       }, 5000);
     });
 });
+// Função de auto-preenchimento do número de telefone e e-mail
+const campoTelefone = document.getElementById("telefone");
+const campoEmail = document.getElementById("email");
+
+// Máscara para telefone
+campoTelefone.addEventListener("input", function (e) {
+  let input = e.target.value.replace(/\D/g, "").substring(0, 13);
+
+  if (input.length > 0) input = "+55 (" + input;
+  if (input.length > 6) input = input.slice(0, 6) + ") " + input.slice(6);
+  if (input.length > 12) input = input.slice(0, 12) + "-" + input.slice(12);
+
+  campoTelefone.value = input;
+});
+
+campoTelefone.addEventListener("paste", function (e) {
+  e.preventDefault();
+});
+
+// Validação no envio
+form.addEventListener("submit", function (e) {
+  const telefoneLimpo = campoTelefone.value.replace(/\D/g, "");
+  const email = campoEmail.value.trim();
+  const padraoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (telefoneLimpo.length !== 13) {
+    e.preventDefault();
+    alert("Por favor, insira um número de telefone válido com DDD no formato: +55 (  ) _____-____");
+    campoTelefone.focus();
+    return;
+  }
+
+  if (!padraoEmail.test(email)) {
+    e.preventDefault();
+    alert("Por favor, insira um endereço de e-mail válido.");
+    campoEmail.focus();
+    return;
+  }
+});
