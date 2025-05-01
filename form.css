@@ -215,6 +215,10 @@ textarea {
   box-sizing: border-box; /* Certifica-se de que o padding não afete o tamanho total do elemento */
 }
 
+p {
+  font-size: 12px;
+}
+
 /* Estilo unificado para campos dentro da .form-group */
 .form-group {
   margin-top: 20px;
