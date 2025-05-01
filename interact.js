@@ -141,3 +141,45 @@ form.addEventListener("submit", (e) => {
       }, 5000);
     });
 });
+// Máscara dinâmica para o campo Telefone
+const telefoneInput = document.getElementById('telefone');
+telefoneInput.addEventListener('input', (e) => {
+  let value = e.target.value;
+
+  // Remove tudo que não for número
+  value = value.replace(/\D/g, '');
+
+  // Remove o +55 caso o usuário tente digitar manualmente
+  if (value.startsWith('55')) {
+    value = value.slice(2);
+  }
+
+  // Limita a 11 dígitos (sem contar o +55)
+  value = value.slice(0, 11);
+
+  // Formatação final
+  if (value.length > 0) {
+    const ddd = value.slice(0, 2);
+    const prefixo = value.slice(2, 7);
+    const sufixo = value.slice(7);
+    e.target.value = `+55 (${ddd}${prefixo ? `) ${prefixo}` : ''}${sufixo ? `-${sufixo}` : ''}`;
+  } else {
+    e.target.value = '';
+  }
+});
+
+// Validação básica de e-mail em tempo real
+const inputEmail = document.getElementById("email");
+
+if (inputEmail) {
+  inputEmail.addEventListener("input", function (e) {
+    const email = e.target.value;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regexEmail.test(email)) {
+      inputEmail.style.border = "2px solid red";
+    } else {
+      inputEmail.style.border = "2px solid green";
+    }
+  });
+}
