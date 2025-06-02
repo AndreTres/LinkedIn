@@ -1,4 +1,3 @@
-/* Reset de estilos padrão */
 * {
   margin: 0;
   padding: 0;
@@ -152,7 +151,6 @@ ul {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
-  appeareance: none;
 }
 
 .btn i {
@@ -165,7 +163,6 @@ ul {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Botão "Voltar ao Topo" */
 #btnTopo {
   display: none;
   position: fixed;
@@ -191,7 +188,6 @@ ul {
   margin-top: 4px;
 }
 
-/* Transições para a entrada das seções */
 .section-hidden {
   opacity: 0;
   transform: translateY(40px);
@@ -211,7 +207,6 @@ footer {
   margin-top: 30px;
 }
 
-/* Galeria de certificados */
 #certificados {
   display: none;
   padding: 30px 20px;
@@ -245,7 +240,6 @@ footer {
   border-left-color: #4db6ac;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   header {
     padding: 80px 20px 40px;
