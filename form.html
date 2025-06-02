@@ -19,7 +19,7 @@
     <h2>Dê o Primeiro Passo</h2>
     <form method="POST" action="backend/processa_contato.php" id="formContato">
       <label for="nome">Nome Completo:</label>
-      <input type="text" id="nome" name="nome" required>
+      <input type="text" id="nome" class="formatar-nome" name="nome" required>
 
       <label for="email">E-mail:</label>
       <p>Digite um e-mail válido*</p>
@@ -30,11 +30,11 @@
       <input type="tel" id="telefone" name="telefone" placeholder="(  ) _____-____" required>
 
       <label for="empresa">Empresa / Organização:</label>
-      <input type="text" id="empresa" name="empresa" required>
+      <input type="text" id="empresa" class="formatar-nome" name="empresa" required>
 
       <div class="form-group">
         <label for="loc">Localização da Empresa:</label>
-        <input type="text" id="loc" name="localizacao" required>
+        <input type="text" id="loc" class="formatar-nome" name="localizacao" required>
 
         <label for="estado">Estado:</label>
         <select id="estado" name="estado" required>
@@ -94,10 +94,10 @@
       </div>
 
       <label for="assunto">Descrição da Vaga</label>
-      <textarea id="desc" name="desc" rows="10" required></textarea>
+      <textarea id="desc" name="desc" class="formatar-frase" rows="10" required></textarea>
 
       <label for="mensagem">Mensagem:</label>
-      <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+      <textarea id="mensagem" name="mensagem" class="formatar-frase" rows="5" required></textarea>
 
       <div class="form-group checkbox-group">
         <label class="checkbox-label">
@@ -107,6 +107,9 @@
       </div>
 
       <button type="submit" class="btn">Enviar Resposta</button>
+      <p>Aviso Importante:
+        Este formulário de contato foi criado apenas para fins de demonstração de conhecimentos em desenvolvimento web.
+        <br>Atualmente, o site está funcionando em um servidor local, por isso não é possível enviar ou armazenar as informações preenchidas.</p>
     </form>
 
     <div class="mensagem-sucesso" id="mensagem-sucesso">
