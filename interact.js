@@ -183,3 +183,30 @@ if (inputEmail) {
     }
   });
 }
+document.addEventListener('DOMContentLoaded', function() {
+  // Função para capitalizar a primeira letra de cada palavra (ex: nomes, empresas, endereços)
+  function formatarNome(texto) {
+    return texto
+      .toLowerCase()
+      .replace(/\b\w/g, letra => letra.toUpperCase());  // Substitui a primeira letra de cada palavra
+  }
+
+  // Função para capitalizar apenas a primeira letra da frase (ex: textos maiores)
+  function formatarFrase(texto) {
+    texto = texto.trim();
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();  // Capitaliza apenas a primeira letra
+  }
+
+  // Aplicar a formatação automaticamente durante a digitação ou ao sair do campo
+  document.querySelectorAll('.formatar-nome').forEach(input => {
+    input.addEventListener('blur', () => {  // 'blur' aplica a formatação quando o campo perde o foco
+      input.value = formatarNome(input.value);
+    });
+  });
+
+  document.querySelectorAll('.formatar-frase').forEach(input => {
+    input.addEventListener('blur', () => {  // 'blur' aplica a formatação quando o campo perde o foco
+      input.value = formatarFrase(input.value);
+    });
+  });
+});
